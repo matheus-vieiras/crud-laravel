@@ -26,6 +26,19 @@ class UserController extends Controller
      */
     public function create()
     {
+
+        $user = new User;
+        $userFound = $user->firstOrCreate(
+            ['firstName' => 'Marta'],
+            [
+                'lastName' => 'Fernandes',
+                'email' => 'marta@gmail.com',
+                'password' => bcrypt('123')
+            ]
+        );
+
+        dd($userFound);
+
         return view('user_create', [
             'title' => 'Create user'
         ]);
@@ -45,15 +58,14 @@ class UserController extends Controller
 
         $saved = (new User())->insert($validated);
 
-        if ($saved){
-            $request->session()->flash('success','Cadastrado com sucesso');
-        }else{
+        ($saved) ?
+            Session::flash('success', 'Cadastrado com sucesso') :
             $request->session()->flash('error', 'Erro ao cadastrar');
 
-        }
-
         return back();
+
     }
+
 
     /**
      * Display the specified resource.

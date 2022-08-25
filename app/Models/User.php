@@ -25,10 +25,8 @@ class User extends Authenticatable
 //        'password',
 //    ];
 
-
-    protected $guarded = [ // os campos que irei bloquear
-        'is_admin',
-    ];
+// os campos que irei bloquear
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
