@@ -14,6 +14,9 @@
                     <a class="nav-link" href="{{route ('user.create')}}">Create User</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route ('posts')}}">Posts</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route ('login')}}">Login User</a>
                 </li>
                 <li class="nav-item dropdown">

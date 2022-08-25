@@ -10,13 +10,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $users = User::paginate();
+        $users = User::with('posts')->paginate(5);
 
-        $post = Post::with(['user' => function ($query) {
-            $query->select('id', 'firstName', 'lastName', 'email');
-        }]);
 
-        dd($post);
+
+
+//        $post = Post::with(['user' => function ($query) {
+//            $query->select('id', 'firstName', 'lastName', 'email');
+//        }]);
+
+//        dd($post);
 
         return view('home', [
             'title' => 'Home crud',

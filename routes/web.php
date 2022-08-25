@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\User;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
@@ -16,13 +17,10 @@ Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update
 Route::put('/password{user}', [PasswordController::class, 'update'])->name('password.update');
 Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
 
-Route::get('/teste', function () {
-    //Cadastra no BD
-//   dd(User::factory()->count(3)->create());
-    //Não cadastra no BD
-   dd(User::factory()->count(3)->make());
-});
+Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('throttle:3');
