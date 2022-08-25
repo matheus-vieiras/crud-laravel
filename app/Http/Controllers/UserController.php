@@ -37,7 +37,6 @@ class UserController extends Controller
             ]
         );
 
-        dd($userFound);
 
         return view('user_create', [
             'title' => 'Create user'
@@ -84,9 +83,13 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+
+        return view('user_edit', [
+            'title' => 'Edit user',
+            'user' => $user
+        ]);
     }
 
     /**
@@ -96,9 +99,23 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validated = $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|unique:users,email,' . $user->id,
+        ]);
+        $updated = $user->update($validated);
+
+        if ($updated){
+            $request->session()->flash('updated_success', 'Atualizado com sucesso');
+        }
+        else {
+            $request->session()->flash('updated_error', 'Erro ao atualizar');
+        }
+
+        return back();
     }
 
     /**

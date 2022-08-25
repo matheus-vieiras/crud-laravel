@@ -5,7 +5,7 @@
 
     <ul>
         @foreach($users as $user)
-            <li>{{$user->fullName}}</li>
+            <li>{{$user->fullName}} - <a href="{{route ('user.edit',[ $user->id])}}">Edit</a></li>
         @endforeach
     </ul>
 
