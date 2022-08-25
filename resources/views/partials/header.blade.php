@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route ('user.create')}}">Create User</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route ('login')}}">Login User</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
@@ -28,7 +31,14 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+
+                    @auth()
+                        <a class="nav-link"> Olá, {{auth()->user()->firstName}} | <a href="{{route('login.destroy')}}">Logout</a></a>
+                    @endauth
+
+                    @guest
+                        <a class="nav-link">Olá, bem vindo visitante!</a>
+                    @endguest
                 </li>
             </ul>
             <form class="d-flex" role="search">

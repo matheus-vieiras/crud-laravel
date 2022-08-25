@@ -15,8 +15,6 @@
                     <button type="submit">Deletar</button>
 
                 </form>
-                <a href="{{route ('user.destroy',[ $user->id])}}">Deletar</a>
-
             </li>
         @endforeach
     </ul>
