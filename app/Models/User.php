@@ -17,10 +17,17 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    // os campos que irei liberar
+//    protected $fillable = [
+//        'firstName',
+//        'lastName',
+//        'email',
+//        'password',
+//    ];
+
+
+    protected $guarded = [ // os campos que irei bloquear
+        'is_admin',
     ];
 
     /**
@@ -49,10 +56,12 @@ class User extends Authenticatable
 
     public function insert(array $data)
     {
-        $this->firstName = $data['firstName'];
-        $this->lastName = $data['lastName'];
-        $this->email = $data['email'];
-        $this->password = bcrypt($data['password']);
-        return $this->save();
+//        $this->firstName = $data['firstName'];
+//        $this->lastName = $data['lastName'];
+//        $this->email = $data['email'];
+//        $this->password = bcrypt($data['password']);
+//        return $this->save();
+        $data['password'] = bcrypt($data['password']);
+        return $this->create($data);
     }
 }

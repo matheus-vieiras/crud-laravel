@@ -41,6 +41,8 @@ class UserController extends Controller
     {
         $validated = $request->validated();
 
+//        $saved = (new User)->create($validated);
+
         $saved = (new User())->insert($validated);
 
         if ($saved){
