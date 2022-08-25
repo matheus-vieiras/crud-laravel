@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
 use App\Models\User;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
@@ -21,6 +22,8 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
 
 Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
+
+Route::get('/tag/{tag}', [TagController::class, 'show'])->name('tag.show');
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('throttle:3');
