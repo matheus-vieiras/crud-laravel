@@ -33,7 +33,7 @@ class LoginController extends Controller
             'email' => $validated['email'],
             'password' => $validated['password'],
             'is_admin' => 1
-        ])) {
+        ],  $request->filled('remember'))) {
             $request->session()->regenerate();
 
             return redirect()->intended('admin');

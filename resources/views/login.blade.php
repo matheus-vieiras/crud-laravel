@@ -12,6 +12,9 @@
         {{$errors->first('email')}}
         <input type="text" name="password" value="123">
         {{$errors->first('password')}}
+
+        <input type="checkbox" name="remember"> Lembrar
+
         <button type="submit">Login</button>
 
     </form>

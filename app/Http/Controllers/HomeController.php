@@ -9,10 +9,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-
+        dd(auth()->user());
         $users = User::paginate();
-
-//        dd($users);
 
         return view('home', [
             'title' => 'Home crud',
