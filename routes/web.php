@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 use App\Models\User;
@@ -24,6 +25,11 @@ Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
 Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('/tag/{tag}', [TagController::class, 'show'])->name('tag.show');
+
+// envio de email
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::Post('/contact', [ContactController::class, 'store'])->name('contact');
+
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('throttle:3');
