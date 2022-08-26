@@ -10,9 +10,7 @@ class PostController extends Controller
 
     public function index()
     {
-
-        $posts = Post::with('author')->paginate(20);
-
+        $posts = Post::listAndSearch();
         return view('posts', [
             'title' => 'Lista de posts',
             'posts' => $posts
