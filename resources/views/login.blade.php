@@ -4,7 +4,7 @@
 
     <h2>Login</h2>
 
-    <form action="{{route('login.store') }}" method="post">
+    <form action="{{route('login.user.store') }}" method="post">
 
         @csrf()
 

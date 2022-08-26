@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
@@ -12,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
@@ -33,15 +31,8 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::Post('/contact', [ContactController::class, 'store'])->name('contact');
 
 
-Route::get('/login/user', [LoginController::class, 'index'])->name('login.user');
-Route::post('/login/user', [LoginController::class, 'store'])->name('login.user.store')->middleware('throttle:3');
-Route::get('/logout/user', [LoginController::class, 'destroy'])->name('login.user.destroy');
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('login.store')->middleware('throttle:3');
+Route::get('logout', [LoginController::class, 'destroy'])->name('login.destroy');
 
 Route::get('admin', [AdminController::class, 'index'])->middleware('auth');
-
-Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('index');
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-});
-
-require __DIR__ . '/auth.php';

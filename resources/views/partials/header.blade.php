@@ -17,7 +17,7 @@
                     <a class="nav-link" href="{{route ('posts')}}">Posts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route ('login')}}">Login User</a>
+                    <a class="nav-link" href="{{route ('login.user')}}">Login User</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -36,7 +36,7 @@
                 <li class="nav-item">
 
                     @auth()
-                        <a class="nav-link"> Olá, {{auth()->user()->firstName}} | <a href="{{route('login.destroy')}}">Logout</a></a>
+                        <a class="nav-link"> Olá, {{auth()->user()->firstName}} | <a href="{{route('login.user.destroy')}}">Logout</a></a>
                     @endauth
 
                     @guest

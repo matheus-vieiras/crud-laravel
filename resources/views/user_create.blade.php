@@ -19,7 +19,7 @@
         @csrf
 
         <label for="firstName">FirstName</label>
-        <input type="text" class="form-control form-control-sm" name="firstName" placeholder="FirstName">
+        <input type="text" class="form-control form-control-sm" name="firstName" placeholder="firstName">
         {{$errors->first('firstName')}}
         <label for="lastName">lastName</label>
         <input type="text" class="form-control form-control-sm" name="lastName" placeholder="lastName">
