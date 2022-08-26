@@ -22,6 +22,8 @@ class Contact extends Mailable
 
     public function build()
     {
-        return $this->from($this->user['email'], $this->user['name'])->subject($this->user['subject'])->view('emails.contact');
+        return $this->from($this->user['email'], $this->user['name'])->subject($this->user['subject'])->markdown('emails.contact', [
+            'url' => 'https://github.com/matheus-vieiras'
+        ]);
     }
 }
