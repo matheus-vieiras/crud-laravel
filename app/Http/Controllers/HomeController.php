@@ -20,7 +20,7 @@ class HomeController extends Controller
 
 //        cache()->flush(); ### exclui todos os caches
 
-        $users = cache()->rememberForever('users1', function () {
+        $users = cache()->remember('users',now()->addMinutes(10), function () {
             return User::limit(10)->get();
         });
 
@@ -34,8 +34,8 @@ class HomeController extends Controller
 //
 //            cache()->forget('users');
 //
-//        dd($users);
-        dd(cache()->get('users'));
+        dd($users);
+//        dd(cache()->get('users'));
 
         return view('home', [
             'title' => 'Home crud',
